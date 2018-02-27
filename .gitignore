@@ -1,0 +1,8 @@
+" No hidden files
+.*
+!.gitignore
+" No output files and binaries
+*.out
+*.o
+gnl
+obj/*
