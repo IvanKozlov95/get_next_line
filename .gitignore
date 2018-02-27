@@ -6,3 +6,6 @@
 *.o
 gnl
 obj/*
+" No tests
+test/
+tests/
