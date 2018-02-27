@@ -82,9 +82,9 @@ int			get_next_line(const int fd, char **line)
 		buff_len = ft_strlen(buffers[fd]);
 		*line = (char *)malloc(sizeof(char) * (nl + 1));
 		ft_strncpy(*line, buffers[fd], nl);
-		*(line)[nl] = '\0';
+		(*line)[nl] = '\0'
 		tmp = (char *)malloc(sizeof(char) * (buff_len - nl + 1));
-		ft_strcpy(tmp, *(buffers + nl));
+		ft_strcpy(tmp, *(buffers + fd) + nl + 1);
 		tmp[buff_len - nl] = '\0';
 		free(buffers[fd]);
 		buffers[fd] = tmp;
