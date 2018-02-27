@@ -6,9 +6,11 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 16:37:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/02/26 18:23:06 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/02/26 20:58:26 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 int		main(int ac, char *av[])
 {
@@ -16,7 +18,5 @@ int		main(int ac, char *av[])
 	smth = 0;
 	av++;
 	ac++;
-	if ((smth == 0) || (smth == 0) || (smth == 0) || (smth == 0) || (smth == 0))
-		return (1);
 	return (0);
 }
