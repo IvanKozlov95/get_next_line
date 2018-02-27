@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/02/27 15:30:34 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/02/27 15:42:39 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int			get_next_line(const int fd, char **line)
 	int			buff_len;
 	int			nl;
 
-	if (fd < 0 || !line || fd > FT_LIMIT || BUFF_SIZE < 1)
+	if (fd < 0 || !line || fd > FD_LIMIT || BUFF_SIZE < 1)
 		return (EOF);
 	if (!buffers)
-		buffers = (char **)malloc(sizeof(char *) * FT_LIMIT);
+		buffers = (char **)malloc(sizeof(char *) * FD_LIMIT);
 	nl = read_line(fd, buffers);
 	if (nl >= 0 && buffers[fd])
 	{
