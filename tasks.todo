@@ -1,0 +1,17 @@
+Get new line:
+	Makefile:
+		✔ finish Makefile @done (2/26/2018, 6:27:00 PM)
+		☐ google optimization flags
+	Git:
+		✔ fill .gitignore @done (2/26/2018, 7:06:31 PM)
+	Code:
+		✔ read pdf @done (2/26/2018, 7:06:29 PM)
+		✔ create arcitecture @done (2/26/2018, 8:09:51 PM)
+		☐ reading from:
+			☐ file
+			☐ stdin
+			☐ refirection (a what?)
+		✔ check for file descriptors limit @done (2/26/2018, 8:10:10 PM)
+		☐ move rebuilding the buffer to separate func
+	Test:
+		☐ check with buff_size 9999, 1, 10000000
