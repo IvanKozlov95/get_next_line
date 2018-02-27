@@ -50,7 +50,7 @@ static int	read_line(const int fd, char **buffers)
 	int		cursor;
 
 	// nothing
-	if (!buffers[fd] && (cursor = read_file(fd, buffers) <= 0))
+	if (!buffers[fd] && ((cursor = read_file(fd, buffers)) <= 0))
 			return (cursor);
 	// less then a line
 	while ((nl = has_new_line(buffers[fd])) < 0)
