@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/02/26 21:53:44 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/02/27 15:05:27 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ static int	read_file(const int fd, char **buffers)
 	if ((cursor = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff_len = buffers[fd] ? ft_strlen(buffers[fd]) : 0;
-		tmp = (char *)malloc(sizeof(char) * (buff_len + cursor + 1));
+		tmp = ft_strnew(buff_len + cursor);
 		buffers[fd] ? ft_strcat(tmp, buffers[fd]) : (void)0;
 		ft_strcat(tmp, buff);
-		buff[buff_len + cursor] = '\0';
+		tmp[buff_len + cursor] = '\0';
 		free(buffers[fd]);
-		buffers[fd] = buff;
+		free(buff);
+		buffers[fd] = tmp;
 	}
 	return (cursor);
 }
@@ -82,7 +83,7 @@ int			get_next_line(const int fd, char **line)
 		buff_len = ft_strlen(buffers[fd]);
 		*line = (char *)malloc(sizeof(char) * (nl + 1));
 		ft_strncpy(*line, buffers[fd], nl);
-		(*line)[nl] = '\0'
+		(*line)[nl] = '\0';
 		tmp = (char *)malloc(sizeof(char) * (buff_len - nl + 1));
 		ft_strcpy(tmp, *(buffers + fd) + nl + 1);
 		tmp[buff_len - nl] = '\0';
