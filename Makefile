@@ -6,7 +6,7 @@
 #    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:22:14 by ikozlov           #+#    #+#              #
-#    Updated: 2018/02/27 16:31:17 by ikozlov          ###   ########.fr        #
+#    Updated: 2018/02/27 22:52:33 by ikozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ OBJ = $(SRC:%.c=%.o)
 LIBFT = ft
 
 all:
-	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) $(NAME)
 
@@ -42,7 +41,7 @@ $(NAME): $(OBJ)
 	gcc $(DEBUG) $(OBJ) -L $(LIBFT_DIR) -l $(LIBFT) -o $(NAME)
 
 clean:
-	@/bin/rm -f $(OBJECTS)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
