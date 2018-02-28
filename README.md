@@ -5,7 +5,7 @@ Install
 ```
 git clone https://github.com/IvanKozlov95/get_next_line
 cd get_next_line
-make re
+make
 ```
 
 Launch
