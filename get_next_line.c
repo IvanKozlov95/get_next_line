@@ -30,9 +30,10 @@ static int	read_file(const int fd, char **buffers)
 	int		cursor;
 	int		buff_len;
 
-	buff = (char *)malloc(sizeof(char) * BUFF_SIZE);
+	buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
 	if ((cursor = read(fd, buff, BUFF_SIZE)) > 0)
 	{
+		buff[cursor] = '\0';
 		buff_len = buffers[fd] ? ft_strlen(buffers[fd]) : 0;
 		tmp = ft_strnew(buff_len + cursor);
 		buffers[fd] ? ft_strcat(tmp, buffers[fd]) : (void)0;
