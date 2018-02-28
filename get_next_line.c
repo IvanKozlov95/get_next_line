@@ -52,7 +52,7 @@ static int	read_line(const int fd, char **buffers)
 
 	cursor = read_file(fd, buffers);
 	if (!buffers[fd] && cursor <= 0)
-		return (cursor);
+		return (-2);
 	while ((nl = has_new_line(buffers[fd])) < 0)
 	{
 		cursor = read_file(fd, buffers);
