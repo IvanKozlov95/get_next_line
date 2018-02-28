@@ -57,7 +57,7 @@ static int	read_line(const int fd, char **buffers)
 	{
 		cursor = read_file(fd, buffers);
 		if (cursor <= 0)
-			return (cursor);
+			return (nl);
 	}
 	return (nl);
 }
@@ -93,7 +93,7 @@ int			get_next_line(const int fd, char **line)
 	if (nl == -2)
 		return (EOF);
 	buff_len = buffers[fd] ? ft_strlen(buffers[fd]) : 0;
-	nl < 0 && buff_len ? (nl = buff_len) : (void)0;
+	nl < 0 ? (nl = buff_len) : (void)0;
 	read = 0;
 	if (nl >= 0 && buff_len > 0)
 	{
