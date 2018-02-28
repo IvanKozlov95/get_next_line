@@ -13,10 +13,14 @@ Get new line:
 			☐ refirection (a what?)
 		✔ check for file descriptors limit @done (2/26/2018, 8:10:10 PM)
 		☐ move rebuilding the buffer to separate func
+	Issues:
+		☐ fix multiple file descriptors
+		☐ fix "asd\n\n" case
+	☐ add readme file
 	Grooming:
 		☐ norminette
 		☐ 42 file checker
 		☐ moulinet tests
 		☐ online test
 	Test:
-		☐ check with buff_size 9999, 1, 10000000
+		✔ check with buff_size 9999, 1, 10000000 @done (2/27/2018, 4:23:10 PM)
