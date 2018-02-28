@@ -90,6 +90,8 @@ int			get_next_line(const int fd, char **line)
 	if (!buffers)
 		buffers = (char **)malloc(sizeof(char *) * FD_LIMIT);
 	nl = read_line(fd, buffers);
+	if (nl == -2)
+		return (EOF);
 	buff_len = buffers[fd] ? ft_strlen(buffers[fd]) : 0;
 	nl < 0 && buff_len ? (nl = buff_len) : (void)0;
 	read = 0;
