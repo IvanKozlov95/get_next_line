@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/02/27 19:14:22 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/02/27 22:44:51 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,17 @@ static int	read_line(const int fd, char **buffers)
 
 char		*strncutout(char *src, char **dst, int size)
 {
-		char	*tmp;
-		int		src_len;
+	char	*tmp;
+	int		src_len;
 
-		src_len = ft_strlen(src);
-		ft_strncpy(*dst, src, size);
-		(*dst)[size] = '\0';
-		tmp = (char *)malloc(sizeof(char) * (src_len - size + 1));
-		ft_strcpy(tmp, src + size + 1);
-		tmp[src_len - size] = '\0';
-		free(src);
-		return (tmp);
-
+	src_len = ft_strlen(src);
+	ft_strncpy(*dst, src, size);
+	(*dst)[size] = '\0';
+	tmp = (char *)malloc(sizeof(char) * (src_len - size + 1));
+	ft_strcpy(tmp, src + size + 1);
+	tmp[src_len - size] = '\0';
+	free(src);
+	return (tmp);
 }
 
 int			get_next_line(const int fd, char **line)
