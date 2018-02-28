@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/02/27 16:53:10 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/02/27 19:14:22 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,27 @@ static int	read_line(const int fd, char **buffers)
 	return (nl);
 }
 
+char		*strncutout(char *src, char **dst, int size)
+{
+		char	*tmp;
+		int		src_len;
+
+		src_len = ft_strlen(src);
+		ft_strncpy(*dst, src, size);
+		(*dst)[size] = '\0';
+		tmp = (char *)malloc(sizeof(char) * (src_len - size + 1));
+		ft_strcpy(tmp, src + size + 1);
+		tmp[src_len - size] = '\0';
+		free(src);
+		return (tmp);
+
+}
+
 int			get_next_line(const int fd, char **line)
 {
 	static char **buffers;
-	char		*tmp;
 	int			buff_len;
+	int			read;
 	int			nl;
 
 	if (fd < 0 || !line || fd > FD_LIMIT || BUFF_SIZE < 1)
@@ -74,18 +90,14 @@ int			get_next_line(const int fd, char **line)
 	if (!buffers)
 		buffers = (char **)malloc(sizeof(char *) * FD_LIMIT);
 	nl = read_line(fd, buffers);
-	if (nl >= 0 && buffers[fd]
-		&& (buff_len = ft_strlen(buffers[fd])))
+	buff_len = buffers[fd] ? ft_strlen(buffers[fd]) : 0;
+	nl < 0 && buff_len ? (nl = buff_len) : (void)0;
+	read = 0;
+	if (nl >= 0 && buff_len > 0)
 	{
-		tmp = (char *)malloc(sizeof(char) * (buff_len - nl + 1));
-		nl == 0 ? (nl = buff_len) : (void)0;
 		*line = (char *)malloc(sizeof(char) * (nl + 1));
-		ft_strncpy(*line, buffers[fd], nl);
-		(*line)[nl] = '\0';
-		ft_strcpy(tmp, *(buffers + fd) + nl + 1);
-		tmp[buff_len - nl] = '\0';
-		free(buffers[fd]);
-		buffers[fd] = tmp;
+		buffers[fd] = strncutout(buffers[fd], line, nl);
+		read = 1;
 	}
-	return (nl);
+	return (read);
 }
