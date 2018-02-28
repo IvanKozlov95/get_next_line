@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/02/27 15:42:39 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/02/27 16:30:07 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int			get_next_line(const int fd, char **line)
 	{
 		buff_len = ft_strlen(buffers[fd]);
 		tmp = (char *)malloc(sizeof(char) * (buff_len - nl + 1));
+		nl = MAX(buff_len, nl);
 		*line = (char *)malloc(sizeof(char) * (nl + 1));
 		ft_strncpy(*line, buffers[fd], nl);
 		(*line)[nl] = '\0';
