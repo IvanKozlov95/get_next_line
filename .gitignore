@@ -7,5 +7,5 @@
 gnl
 obj/*
 " No tests
-test/
-tests/
+" test/
+" tests/
