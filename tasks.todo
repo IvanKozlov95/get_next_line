@@ -1,17 +1,22 @@
 Get new line:
 	Makefile:
 		✔ finish Makefile @done (2/26/2018, 6:27:00 PM)
-		☐ google optimization flags
+		✘ google optimization flags @cancelled (2/27/2018, 3:18:03 PM)
 	Git:
 		✔ fill .gitignore @done (2/26/2018, 7:06:31 PM)
 	Code:
 		✔ read pdf @done (2/26/2018, 7:06:29 PM)
 		✔ create arcitecture @done (2/26/2018, 8:09:51 PM)
 		☐ reading from:
-			☐ file
+			✔ file @done (2/27/2018, 3:17:54 PM)
 			☐ stdin
 			☐ refirection (a what?)
 		✔ check for file descriptors limit @done (2/26/2018, 8:10:10 PM)
 		☐ move rebuilding the buffer to separate func
+	Grooming:
+		☐ norminette
+		☐ 42 file checker
+		☐ moulinet tests
+		☐ online test
 	Test:
 		☐ check with buff_size 9999, 1, 10000000
