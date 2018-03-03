@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/02/27 22:44:51 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/03 15:29:44 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ static int	has_new_line(char *line)
 
 static int	read_file(const int fd, char **buffers)
 {
-	char	*buff;
+	char	buff[BUFF_SIZE + 1];
 	char	*tmp;
 	int		cursor;
 	int		buff_len;
 
-	buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
 	if ((cursor = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff[cursor] = '\0';
@@ -40,7 +39,6 @@ static int	read_file(const int fd, char **buffers)
 		ft_strcat(tmp, buff);
 		tmp[buff_len + cursor] = '\0';
 		free(buffers[fd]);
-		free(buff);
 		buffers[fd] = tmp;
 	}
 	return (cursor);
