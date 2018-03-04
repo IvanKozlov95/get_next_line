@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/03 15:29:44 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/03 21:44:46 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char		*strncutout(char *src, char **dst, int size)
 	ft_strncpy(*dst, src, size);
 	(*dst)[size] = '\0';
 	tmp = (char *)malloc(sizeof(char) * (src_len - size + 1));
-	ft_strcpy(tmp, src + size + 1);
+	ft_strcpy(tmp, src + size + (size == src_len ? 0 : 1));
 	tmp[src_len - size] = '\0';
 	free(src);
 	return (tmp);
