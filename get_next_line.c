@@ -6,21 +6,19 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 18:55:23 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/03 21:44:46 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/21 23:56:17 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	has_new_line(char *line)
+static void	init_buffers(char **b)
 {
 	int		i;
 
 	i = -1;
-	while (line && line[++i])
-		if (line[i] == '\n')
-			return (i);
-	return (-1);
+	while (++i < FD_LIMIT)
+		b[i] = NULL;
 }
 
 static int	read_file(const int fd, char **buffers)
@@ -52,7 +50,7 @@ static int	read_line(const int fd, char **buffers)
 	cursor = read_file(fd, buffers);
 	if (!buffers[fd] && cursor <= 0)
 		return (-2);
-	while ((nl = has_new_line(buffers[fd])) < 0)
+	while ((nl = ft_strchri(buffers[fd], '\n')) < 0)
 	{
 		cursor = read_file(fd, buffers);
 		if (cursor <= 0)
@@ -86,7 +84,10 @@ int			get_next_line(const int fd, char **line)
 	if (fd < 0 || !line || fd > FD_LIMIT || BUFF_SIZE < 1)
 		return (EOF);
 	if (!buffers)
+	{
 		buffers = (char **)malloc(sizeof(char *) * FD_LIMIT);
+		init_buffers(buffers);
+	}
 	nl = read_line(fd, buffers);
 	if (nl == -2)
 		return (EOF);
